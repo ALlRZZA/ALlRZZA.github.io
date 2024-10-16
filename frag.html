@@ -8,20 +8,77 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 20px;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
         .warning {
             color: orange;
             font-weight: bold;
             margin: 20px 0;
+            font-size: 18px;
+        }
+        .download-link {
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            text-align: left;
+            direction: ltr;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            max-width: 90%;
+            overflow-x: auto;
+        }
+        .copy-success {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>متن اصلی</h1>
-    <pre id="config">
-{
-  "remarks": "<span id="user-remark">متن دلخواه شما</span>",
+    <!-- هشدار و لینک دانلود -->
+    <div class="warning">حتما از نیکا ان جی یا مهسا ان جی استفاده کنید⚠️</div>
+    <div class="download-link">
+        <a href="https://github.com/mahsanet/NikaNG/releases/download/v1.8.38/NikaNG_1.8.38_universal-signed.apk" target="_blank">برای دانلود نیکا ان جی کلیک کنید</a>
+    </div>
+
+    <!-- بخش انتخاب نام دلخواه -->
+    <h2>نام دلخواه خود را وارد کنید:</h2>
+    <input type="text" id="userInput" placeholder="مثال: Test">
+    <button onclick="generateJson()">ایجاد</button>
+
+    <!-- نمایش متن JSON -->
+    <pre id="jsonOutput"></pre>
+
+    <!-- پیام موفقیت کپی -->
+    <div class="copy-success" id="copySuccess" style="display: none;">متن با موفقیت در کلیپ‌بورد کپی شد!</div>
+
+    <script>
+        function generateJson() {
+            const userInput = document.getElementById("userInput").value || "Example";
+            const jsonContent = `{
+  "remarks": "${userInput}",
   "log": {
     "loglevel": "warning"
   },
@@ -218,18 +275,16 @@
     ]
   },
   "stats": {}
-}
-    </pre>
+}`;
 
-    <div class="warning">حتما از نیکا ان جی یا مهسا ان جی استفاده کنید⚠️</div>
+            document.getElementById("jsonOutput").textContent = jsonContent;
 
-    <a href="https://github.com/mahsanet/NikaNG/releases/download/v1.8.38/NikaNG_1.8.38_universal-signed.apk" target="_blank">برای دانلود نیکا ان جی کلیک کنید</a>
-
-    <script>
-        // اینجا می‌تونی متن دلخواه کاربر رو به جای "Example" قرار بدی
-        const userInput = prompt("متن دلخواه خود را وارد کنید:");
-        if (userInput) {
-            document.getElementById("user-remark").innerText = userInput;
+            // کپی کردن به کلیپ‌بورد
+            navigator.clipboard.writeText(jsonContent).then(() => {
+                document.getElementById("copySuccess").style.display = "block";
+            }).catch(() => {
+                alert("متن در کلیپ‌بورد کپی نشد. لطفاً دستی کپی کنید.");
+            });
         }
     </script>
 </body>
