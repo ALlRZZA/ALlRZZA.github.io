@@ -11,7 +11,6 @@
             padding: 20px;
             background-color: #1e1e1e;
             color: white;
-            transition: background-color 0.3s, color 0.3s;
         }
         .warning {
             color: orange;
@@ -73,25 +72,9 @@
         .popup button:hover {
             background-color: darkorange;
         }
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .theme-toggle.light {
-            background-color: #ddd;
-            color: black;
-        }
     </style>
 </head>
 <body>
-    <!-- دکمه تغییر تم -->
-    <button class="theme-toggle" onclick="toggleTheme()">تغییر تم</button>
 
     <!-- هشدار و لینک دانلود -->
     <div class="warning">حتما از نیکا ان جی یا مهسا ان جی استفاده کنید⚠️</div>
@@ -114,21 +97,6 @@
     </div>
 
     <script>
-        // تغییر تم
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.querySelector('.theme-toggle');
-            if (body.style.backgroundColor === 'white') {
-                body.style.backgroundColor = '#1e1e1e';
-                body.style.color = 'white';
-                themeToggle.classList.remove('light');
-            } else {
-                body.style.backgroundColor = 'white';
-                body.style.color = 'black';
-                themeToggle.classList.add('light');
-            }
-        }
-
         // تولید JSON
         function generateJson() {
             const userInput = document.getElementById("userInput").value || "Example";
@@ -294,3 +262,24 @@
         "downlinkOnly": 1,
         "handshake": 4,
         "uplinkOnly": 1
+      }
+    }
+  }
+}`;
+
+            document.getElementById("jsonOutput").textContent = jsonContent;
+
+            // کپی کردن به کلیپ‌بورد
+            navigator.clipboard.writeText(jsonContent).then(function() {
+                document.getElementById("popup").style.display = "block";
+            });
+        }
+
+        // بستن پاپ‌آپ
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
