@@ -3,281 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحه فرگ</title>
+    <title>Configuration Generator</title>
     <style>
         body {
-            text-align: center;
-            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
             padding: 20px;
-            background-color: #1e1e1e;
-            color: white;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
         }
         .warning {
             color: orange;
             font-weight: bold;
-            margin: 20px 0;
-            font-size: 18px;
-        }
-        .download-link {
-            margin-bottom: 30px;
-        }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 16px;
-            width: 80%;
-            max-width: 400px;
-            margin: 20px 0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: orange;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: darkorange;
         }
         pre {
             text-align: left;
-            direction: ltr;
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            max-width: 90%;
-            overflow-x: auto;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border: 2px solid orange;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .popup button {
-            background-color: orange;
-            color: white;
+            background-color: #1e1e1e;
             padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-        .popup button:hover {
-            background-color: darkorange;
+            border-radius: 5px;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
 
-    <!-- هشدار و لینک دانلود -->
+    <h1>تولید کننده کانفیگ</h1>
+    <input type="text" id="userName" placeholder="نام دلخواه خود را وارد کنید">
+    <button onclick="generateConfig()">تولید کانفیگ</button>
+
     <div class="warning">حتما از نیکا ان جی یا مهسا ان جی استفاده کنید⚠️</div>
-    <div class="download-link">
-        <a href="https://github.com/mahsanet/NikaNG/releases/download/v1.8.38/NikaNG_1.8.38_universal-signed.apk" target="_blank">برای دانلود نیکا ان جی کلیک کنید</a>
-    </div>
 
-    <!-- بخش انتخاب نام دلخواه -->
-    <h2>نام دلخواه خود را وارد کنید:</h2>
-    <input type="text" id="userInput" placeholder="مثال: Test">
-    <button onclick="generateJson()">ایجاد</button>
+    <h2>پیکربندی JSON:</h2>
+    <pre id="configOutput"></pre>
 
-    <!-- نمایش متن JSON -->
-    <pre id="jsonOutput"></pre>
-
-    <!-- پاپ‌آپ تایید -->
-    <div id="popup" class="popup">
-        متن کانفیگ در کلیپ‌بورد کپی شد! <br>
-        <button onclick="closePopup()">باشه</button>
-    </div>
+    <a href="https://github.com/mahsanet/NikaNG/releases/download/v1.8.38/NikaNG_1.8.38_universal-signed.apk" target="_blank">
+        <button>برای دانلود نیکا ان جی کلیک کنید</button>
+    </a>
 
     <script>
-        // تولید JSON
-        function generateJson() {
-            const userInput = document.getElementById("userInput").value || "Example";
-            const jsonContent = `{
-  "remarks": "${userInput}",
-  "log": {
-    "loglevel": "warning"
-  },
-  "dns": {
-    "hosts": {
-      "domain:googleapis.cn": [
-        "googleapis.com"
-      ],
-      "cloudflare-dns.com": [
-        "104.16.248.249",
-        "104.16.249.249",
-        "2606:4700::6810:f9f9",
-        "2606:4700::6810:f8f9"
-      ]
-    },
-    "servers": [
-      "https://cloudflare-dns.com/dns-query"
-    ],
-    "tag": "dns"
-  },
-  "inbounds": [
-    {
-      "port": 10808,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "socks-in"
-    },
-    {
-      "port": 10809,
-      "protocol": "http",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "enabled": true,
-        "routeOnly": true
-      },
-      "tag": "http-in"
-    },
-    {
-      "listen": "127.0.0.1",
-      "port": 10853,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "address": "1.1.1.1",
-        "network": "tcp,udp",
-        "port": 53
-      },
-      "tag": "dns-in"
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "www.speedtest.net",
-            "port": 443,
-            "users": [
-              {
-                "encryption": "none",
-                "flow": "",
-                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "sockopt": {
-          "dialerProxy": "fragment",
-          "tcpNoDelay": true
-        },
-        "tlsSettings": {
-          "allowInsecure": false,
-          "fingerprint": "randomized",
-          "alpn": [
-            "h2",
-            "http/1.1"
-          ],
-          "serverName": "CLouDFlAReIRAn1.PAgeS.DEV"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "cloudflareiran1.pages.dev",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
-          },
-          "path": "/JjtsJPPN4Ndy5xZl?ed=2560"
-        }
-      },
-      "tag": "proxy"
-    },
-    {
-      "tag": "fragment",
-      "protocol": "freedom",
-      "settings": {
-        "fragment": {
-          "packets": "tlshello",
-          "length": "10-30",
-          "interval": "1-2"
-        }
-      },
-      "streamSettings": {
-        "sockopt": {
-          "tcpKeepAliveIdle": 100,
-          "tcpNoDelay": true
-        }
-      }
-    },
-    {
-      "protocol": "dns",
-      "tag": "dns-out"
-    },
-    {
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      },
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      },
-      "tag": "block"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    }
-  }
-}`;
+        function generateConfig() {
+            const userName = document.getElementById("userName").value || "Example";
+            const config = {
+                "remarks": userName,
+                "log": { "loglevel": "warning" },
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": ["googleapis.com"],
+                        "cloudflare-dns.com": [
+                            "104.16.248.249",
+                            "104.16.249.249",
+                            "2606:4700::6810:f9f9",
+                            "2606:4700::6810:f8f9"
+                        ]
+                    },
+                    "servers": ["https://cloudflare-dns.com/dns-query"],
+                    "tag": "dns"
+                },
+                "inbounds": [
+                    {
+                        "port": 10808,
+                        "protocol": "socks",
+                        "settings": { "auth": "noauth", "udp": true, "userLevel": 8 },
+                        "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": true },
+                        "tag": "socks-in"
+                    },
+                    {
+                        "port": 10809,
+                        "protocol": "http",
+                        "settings": { "auth": "noauth", "udp": true, "userLevel": 8 },
+                        "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": true },
+                        "tag": "http-in"
+                    },
+                    {
+                        "listen": "127.0.0.1",
+                        "port": 10853,
+                        "protocol": "dokodemo-door",
+                        "settings": { "address": "1.1.1.1", "network": "tcp,udp", "port": 53 },
+                        "tag": "dns-in"
+                    }
+                ],
+                "outbounds": [
+                    {
+                        "protocol": "vless",
+                        "settings": {
+                            "vnext": [
+                                {
+                                    "address": "www.speedtest.net",
+                                    "port": 443,
+                                    "users": [
+                                        {
+                                            "encryption": "none",
+                                            "flow": "",
+                                            "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                                            "level": 8,
+                                            "security": "auto"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "streamSettings": {
+                            "network": "ws",
+                            "security": "tls",
+                            "sockopt": { "dialerProxy": "fragment", "tcpNoDelay": true },
+                            "tlsSettings": {
+                                "allowInsecure": false,
+                                "fingerprint": "randomized",
+                                "alpn": ["h2", "http/1.1"],
+                                "serverName": "CLouDFlAReIRAn1.PAgeS.DEV"
+                            },
+                            "wsSettings": {
+                                "headers": {
+                                    "Host": "cloudflareiran1.pages.dev",
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+                                },
+                                "path": "/JjtsJPPN4Ndy5xZl?ed=2560"
+                            }
+                        },
+                        "tag": "proxy"
+                    },
+                    {
+                        "tag": "fragment",
+                        "protocol": "freedom",
+                        "settings": {
+                            "fragment": { "packets": "tlshello", "length": "10-30", "interval": "1-2" }
+                        },
+                        "streamSettings": {
+                            "sockopt": { "tcpKeepAliveIdle": 100, "tcpNoDelay": true }
+                        }
+                    },
+                    {
+                        "protocol": "dns",
+                        "tag": "dns-out"
+                    },
+                    {
+                        "protocol": "freedom",
+                        "settings": { "domainStrategy": "UseIP" },
+                        "tag": "direct"
+                    },
+                    {
+                        "protocol": "blackhole",
+                        "settings": { "response": { "type": "http" } },
+                        "tag": "block"
+                    }
+                ],
+                "policy": {
+                    "levels": {
+                        "8": { "connIdle": 300, "downlinkOnly": 1, "handshake": 4, "uplinkOnly": 1 }
+                    },
+                    "system": { "statsOutboundUplink": true, "statsOutboundDownlink": true }
+                },
+                "routing": {
+                    "domainStrategy": "IPIfNonMatch",
+                    "rules": [
+                        { "inboundTag": ["dns-in"], "outboundTag": "dns-out", "type": "field" },
+                        { "ip": ["8.8.8.8"], "outboundTag": "direct", "port": "53", "type": "field" },
+                        { "outboundTag": "proxy", "type": "field", "ip": ["0.0.0.0/0", "::/0"] }
+                    ]
+                },
+                "stats": {}
+            };
 
-            document.getElementById("jsonOutput").textContent = jsonContent;
+            const configOutput = JSON.stringify(config, null, 2);
+            document.getElementById("configOutput").textContent = configOutput;
 
-            // کپی کردن به کلیپ‌بورد
-            navigator.clipboard.writeText(jsonContent).then(function() {
-                document.getElementById("popup").style.display = "block";
+            // Copy to clipboard
+            navigator.clipboard.writeText(configOutput).then(() => {
+                alert("متن کانفیگ در کلیپ بورد کپی شد");
             });
-        }
-
-        // بستن پاپ‌آپ
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
         }
     </script>
 
