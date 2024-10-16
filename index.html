@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انتخاب نام دلخواه</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>نام دلخواه خود را برای کانفیگ انتخاب کنید</h1>
+    <input type="text" id="nameInput" placeholder="نام دلخواه خود را وارد کنید">
+    <button onclick="generateConfig()">دریافت کانفیگ</button>
+
+    <p id="result" style="margin-top: 20px;"></p>
+
+    <script>
+        function generateConfig() {
+            const name = document.getElementById('nameInput').value;
+            const config = `vless://4f610300-d03b-4740-8a70-bdf64020e605@188.114.96.4:443/?type=ws&encryption=none&flow=&host=TEsTSaNGIN.paGes.DeV&path=%2FfRh9rQDIefca40cV&security=tls&sni=TeStSANgin.paGeS.DeV&alpn=http%2F1.1&fp=randomized#${name}`;
+            document.getElementById('result').innerText = "برای دریافت کانفیگ خود کلیک کنید";
+            navigator.clipboard.writeText(config).then(() => {
+                alert("متن کپی شد: " + config);
+            });
+        }
+    </script>
+
+</body>
+</html>
