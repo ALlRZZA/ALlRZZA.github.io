@@ -114,6 +114,22 @@
     </div>
 
     <script>
+        // تغییر تم
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (body.style.backgroundColor === 'white') {
+                body.style.backgroundColor = '#1e1e1e';
+                body.style.color = 'white';
+                themeToggle.classList.remove('light');
+            } else {
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                themeToggle.classList.add('light');
+            }
+        }
+
+        // تولید JSON
         function generateJson() {
             const userInput = document.getElementById("userInput").value || "Example";
             const jsonContent = `{
@@ -278,28 +294,3 @@
         "downlinkOnly": 1,
         "handshake": 4,
         "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": true,
-      "statsOutboundDownlink": true
-    }
-  },
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "inboundTag": [
-          "dns-in"
-        ],
-        "outboundTag": "dns-out",
-        "type": "field"
-      },
-      {
-        "ip": [
-          "8.8.8.8"
-        ],
-        "outboundTag": "direct",
-        "port": "53",
-        "type": "field"
-     
