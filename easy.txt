@@ -1,0 +1,1916 @@
+{
+  "remarks": " BPB F - Best Fragment 🇩🇪🐧",
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": [
+        "googleapis.com"
+      ],
+      "cloudflareiran4.pages.dev": [
+        "172.66.47.204",
+        "172.66.44.52",
+        "2606:4700:310c::ac42:2fcc",
+        "2606:4700:310c::ac42:2c34"
+      ]
+    },
+    "servers": [
+      "https://8.8.8.8/dns-query"
+    ],
+    "tag": "dns"
+  },
+  "inbounds": [
+    {
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "socks-in"
+    },
+    {
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "http-in"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10853,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "1.1.1.1",
+        "network": "tcp,udp",
+        "port": 53
+      },
+      "tag": "dns-in"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-1",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-1"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-1"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-1"
+    },
+    {
+      "tag": "frag-1",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "10-20",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-2",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-2"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-2"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-2"
+    },
+    {
+      "tag": "frag-2",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "20-30",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-3",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-3"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-3"
+    },
+    {
+      "tag": "frag-3",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "30-40",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-4",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-4"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-4"
+    },
+    {
+      "tag": "frag-4",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "40-50",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-5",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-5"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-5"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-5"
+    },
+    {
+      "tag": "frag-5",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "50-60",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-6",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-6"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-6"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-6"
+    },
+    {
+      "tag": "frag-6",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "60-70",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-7",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-7"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-7"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-7"
+    },
+    {
+      "tag": "frag-7",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "70-80",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-8",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-8"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-8"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-8"
+    },
+    {
+      "tag": "frag-8",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "80-90",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-9",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-9"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-9"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-9"
+    },
+    {
+      "tag": "frag-9",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "90-100",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-10",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-10"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-10"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-10"
+    },
+    {
+      "tag": "frag-10",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "10-30",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-11",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-11"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-11"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-11"
+    },
+    {
+      "tag": "frag-11",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "20-40",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-12",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-12"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-12"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-12"
+    },
+    {
+      "tag": "frag-12",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "30-50",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-13",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-13"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-13"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-13"
+    },
+    {
+      "tag": "frag-13",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "40-60",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-14",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-14"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-14"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-14"
+    },
+    {
+      "tag": "frag-14",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "50-70",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-15",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-15"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-15"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-15"
+    },
+    {
+      "tag": "frag-15",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "60-80",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-16",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-16"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-16"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-16"
+    },
+    {
+      "tag": "frag-16",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "70-90",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-17",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-17"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-17"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-17"
+    },
+    {
+      "tag": "frag-17",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "80-100",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "158.180.49.11",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "5bcf091e-6bd2-40ea-8ca6-3993542f10a4",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "dialerProxy": "prox-18",
+          "tcpNoDelay": true
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "discordapp.com",
+          "shortId": ""
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "xyz"
+        }
+      },
+      "tag": "chain-18"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cloudflareiran4.pages.dev",
+            "port": 443,
+            "users": [
+              {
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "frag-18"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "cloudflareiran4.pages.dev",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+          },
+          "path": "/CeyoB2DCJI9YQCwv?ed=2560"
+        },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "fingerprint": "randomized",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "serverName": "CloUdfLArEIrAn4.pAges.dEV"
+        }
+      },
+      "tag": "prox-18"
+    },
+    {
+      "tag": "frag-18",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "100-200",
+          "interval": "1-1"
+        },
+        "domainStrategy": "UseIP"
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 100,
+          "tcpNoDelay": true
+        }
+      }
+    },
+    {
+      "protocol": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    },
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "inboundTag": [
+          "dns-in"
+        ],
+        "outboundTag": "dns-out",
+        "type": "field"
+      },
+      {
+        "inboundTag": [
+          "socks-in",
+          "http-in"
+        ],
+        "port": "53",
+        "outboundTag": "dns-out",
+        "type": "field"
+      },
+      {
+        "network": "tcp,udp",
+        "balancerTag": "all",
+        "type": "field"
+      }
+    ],
+    "balancers": [
+      {
+        "tag": "all",
+        "selector": [
+          "chain"
+        ],
+        "strategy": {
+          "type": "leastPing"
+        }
+      }
+    ]
+  },
+  "observatory": {
+    "probeInterval": "30s",
+    "probeURL": "https://www.gstatic.com/generate_204",
+    "subjectSelector": [
+      "chain"
+    ],
+    "EnableConcurrency": true
+  },
+  "stats": {}
+}
