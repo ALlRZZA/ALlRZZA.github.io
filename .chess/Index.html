@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirty Chess</title>
+
+    <!-- اضافه کردن لینک‌های CDN برای کتابخانه‌ها -->
+    <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <style>
+        /* استایل‌های اضافی برای صفحه */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        #board {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحه اصلی بازی -->
+    <h1>Dirty Chess</h1>
+    <div id="board" style="width: 400px;"></div>
+    <button onclick="invitePlayer()">دعوت به بازی</button>
+
+    <script>
+        // تنظیمات بازی شطرنج کثیف
+        const board = Chessboard('board', {
+            draggable: true,
+            dropOffBoard: 'trash',
+            onDrop: handleMove
+        });
+
+        const game = new Chess();
+
+        // کنترل حرکت‌ها
+        function handleMove(source, target) {
+            const move = game.move({
+                from: source,
+                to: target,
+                promotion: 'q' // ارتقای پیاده به وزیر
+            });
+
+            if (!move) {
+                // اگر حرکت غیرقانونی باشه (برای سیاه‌ها)
+                alert('حرکت غیرمجاز!');
+                return 'snapback';
+            }
+
+            if (game.turn() === 'w') {
+                // قوانین رو برای سفید نادیده بگیر
+                game.undo();
+                board.position(game.fen());
+            }
+        }
+
+        // دعوت به بازی
+        function invitePlayer() {
+            const url = window.location.href;
+            prompt('لینک رو برای دوستت بفرست:', url);
+        }
+    </script>
+</body>
+</html>
 
